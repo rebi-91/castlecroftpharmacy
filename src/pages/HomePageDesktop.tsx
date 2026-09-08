@@ -366,14 +366,20 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import Header from './Header';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faChevronRight, faPhone } from '@fortawesome/free-solid-svg-icons';
+import {
+  faArrowRight,
+  faPhone,
+  faChevronLeft,
+  faChevronRight,
+  faStar,
+  faShieldHalved,
+  faLocationDot,
+} from '@fortawesome/free-solid-svg-icons';
 import './HomePageDesktop.css';
 
-const ACCENT = '#00D364';
-const PRIMARY = '#0A1F44';
-const TEXT = '#1C2B39';
+/* ---------------------------------------------------------------- data --- */
 
-const NAV_LINKS: Record<string,string> = {
+const NAV_LINKS: Record<string, string> = {
   'All Services': '/services?tab=ALL',
   'Travel Clinic': '/services?tab=TRAVEL',
   'Private Treatments': '/services?tab=PRIVATE',
@@ -381,7 +387,7 @@ const NAV_LINKS: Record<string,string> = {
   'Pharmacy First': '/services?tab=PHARMACY',
 };
 
-const HERO_CARD_LINKS: Record<string,string> = {
+const HERO_CARD_LINKS: Record<string, string> = {
   'Ear Piercing': '/book/46',
   'Travel Clinic': '/travel-clinic',
   'Ear Wax Removal': '/microsuction-earwax-removal',
@@ -393,332 +399,330 @@ const popularServices = [
   {
     title: 'Weight loss clinic',
     link: '/weight-loss-clinic',
-    sub: 'Achieve your weight goals.',
-    img:
-      'https://gpcdcgwgkciyogknekwp.supabase.co/storage/v1/object/public/pharmacy/weightclinic.jpg',
+    sub: 'Clinician-led programmes to help you reach your goals safely.',
+    img: 'https://gpcdcgwgkciyogknekwp.supabase.co/storage/v1/object/public/pharmacy/weightclinic.jpg',
   },
   {
-    title: 'Ear Wax Removal',
+    title: 'Ear wax removal',
     link: '/book/18',
-    sub: 'Safe microsuction for clear, comfortable ears.',
-    img:
-    'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/123156/AHHct1yZUR.webp',
+    sub: 'Gentle microsuction for clear, comfortable ears.',
+    img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/123156/AHHct1yZUR.webp',
   },
   {
-    title: 'Travel Vaccinations',
+    title: 'Travel vaccinations',
     link: '/travel-clinic',
-    sub: 'Comprehensive vaccine service for your trip.',
-    img:
-    'https://focus.independent.ie/thumbor/kZpypGnMeOe4CqXsAfQrkN28nCk=/0x8:1500x835/731x411/prod-mh-ireland/058221aa-c2c3-11ed-8d5b-0210609a3fe2.jpg',
+    sub: 'A full vaccine and advice service before you travel.',
+    img: 'https://focus.independent.ie/thumbor/kZpypGnMeOe4CqXsAfQrkN28nCk=/0x8:1500x835/731x411/prod-mh-ireland/058221aa-c2c3-11ed-8d5b-0210609a3fe2.jpg',
   },
   {
-    title: 'Vitamin B12 Injection',
+    title: 'Vitamin B12 injection',
     link: '/book/6',
-    sub: 'Restore energy and improve vitality.',
-    img:
-    'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fservices%2Fvitamin-b12-injection.webp&w=640&q=75',
+    sub: 'Restore your energy levels and everyday vitality.',
+    img: 'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fservices%2Fvitamin-b12-injection.webp&w=640&q=75',
   },
   {
-    title: 'Oral Contraception',
+    title: 'Oral contraception',
     link: '/oral-contraceptives',
-    sub: 'Fast, confidential help when you need it.',
-    img:
-    'https://gpcdcgwgkciyogknekwp.supabase.co/storage/v1/object/public/pharmacy/pic.png',
+    sub: 'Fast, confidential support whenever you need it.',
+    img: 'https://gpcdcgwgkciyogknekwp.supabase.co/storage/v1/object/public/pharmacy/pic.png',
   },
   {
     title: 'Erectile dysfunction',
     link: '/book/20',
-    sub: 'Effective solutions tailored to your needs.',
-    img:
-      'https://gpcdcgwgkciyogknekwp.supabase.co/storage/v1/object/public/pharmacy/ed.jpeg',
+    sub: 'Discreet treatments tailored to you.',
+    img: 'https://gpcdcgwgkciyogknekwp.supabase.co/storage/v1/object/public/pharmacy/ed.jpeg',
   },
 ];
 
-const covidvaccine = [
+const covidVaccine = [
   {
-    title: 'COVID vaccine',
+    title: 'COVID-19 booster',
     link: '/book/16',
-    sub: 'Free COVID-19 booster for eligible patients (over 75).',
-    img:
-      'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/542160/8ruIf7vdRW.webp',
+    sub: 'Free NHS booster for eligible patients aged 75 and over.',
+    img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/542160/8ruIf7vdRW.webp',
   },
   {
     title: 'Flu jab',
     link: '/book/14',
-    sub: 'Free NHS flu jab to keep you protected.',
-    img:
-    'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/101404/2-EtcvQ5-J.webp',
+    sub: 'Free NHS flu vaccination to keep you protected this winter.',
+    img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/101404/2-EtcvQ5-J.webp',
   },
   {
-    title: 'Private COVID-19 Vaccination',
+    title: 'Private COVID-19 vaccination',
     link: '/book/45',
-    sub: 'Private COVID-19 Vaccination - £75 per dose',
-    img:
-    'https://aylestonepharmacy.co.uk/wp-content/uploads/2025/10/senior-male-patient-getting-vaccinated-coronavirus-scaled.jpg',
+    sub: 'Book privately from £75 per dose, no eligibility needed.',
+    img: 'https://aylestonepharmacy.co.uk/wp-content/uploads/2025/10/senior-male-patient-getting-vaccinated-coronavirus-scaled.jpg',
   },
 ];
 
 const pharmacyFirst = [
-  {
-    title: 'Sinusitis',
-    link: '/book/21',
-    img:
-      'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Fsinusitis.webp&w=1200&q=75',
-    subtitle: 'Ages 12+',
-  },
-  {
-    title: 'Sore throat',
-    link: '/book/2',
-    img:
-      'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Fsore-throat.webp&w=1200&q=75',
-    subtitle: 'Ages 5+',
-  },
-  {
-    title: 'Earache',
-    link: '/book/19',
-    img:
-      'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Fearache.webp&w=1200&q=75',
-    subtitle: 'Ages 1–17',
-  },
-  {
-    title: 'Infected insect bite',
-    link: '/book/8',
-    img:
-      'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Finsect-bite.webp&w=1200&q=75',
-    subtitle: 'Ages 1+',
-  },
-  {
-    title: 'Impetigo',
-    link: '/book/7',
-    img:
-      'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Fimpetigo.webp&w=1200&q=75',
-    subtitle: 'Ages 1+',
-  },
-  {
-    title: 'Shingles',
-    link: '/book/44',
-    img:
-      'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Fshingles.webp&w=1200&q=75',
-    subtitle: 'Ages 18+',
-  },
-  {
-    title: 'Uncomplicated UTI (women)',
-    link: '/book/5',
-    img:
-      'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Futi.webp&w=1200&q=75',
-    subtitle: 'Women aged 16–64',
-  },
+  { title: 'Sinusitis', link: '/book/21', subtitle: 'Ages 12+', img: 'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Fsinusitis.webp&w=1200&q=75' },
+  { title: 'Sore throat', link: '/book/2', subtitle: 'Ages 5+', img: 'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Fsore-throat.webp&w=1200&q=75' },
+  { title: 'Earache', link: '/book/19', subtitle: 'Ages 1–17', img: 'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Fearache.webp&w=1200&q=75' },
+  { title: 'Infected insect bite', link: '/book/8', subtitle: 'Ages 1+', img: 'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Finsect-bite.webp&w=1200&q=75' },
+  { title: 'Impetigo', link: '/book/7', subtitle: 'Ages 1+', img: 'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Fimpetigo.webp&w=1200&q=75' },
+  { title: 'Shingles', link: '/book/44', subtitle: 'Ages 18+', img: 'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Fshingles.webp&w=1200&q=75' },
+  { title: 'Uncomplicated UTI', link: '/book/5', subtitle: 'Women 16–64', img: 'https://www.chathampharmacy.co.uk/_next/image?url=%2Fimages%2Fpharmacy-first%2Futi.webp&w=1200&q=75' },
 ];
+
+/* ------------------------------------------------------------- google -- */
+
+function GoogleG() {
+  return (
+    <svg className="google-g" viewBox="0 0 48 48" aria-hidden="true">
+      <path fill="#4285F4" d="M45.12 24.5c0-1.56-.14-3.06-.4-4.5H24v8.51h11.84c-.51 2.75-2.06 5.08-4.39 6.64v5.52h7.11c4.16-3.83 6.56-9.47 6.56-16.17z" />
+      <path fill="#34A853" d="M24 46c5.94 0 10.92-1.97 14.56-5.33l-7.11-5.52c-1.97 1.32-4.49 2.1-7.45 2.1-5.73 0-10.58-3.87-12.31-9.07H4.34v5.7C7.96 41.07 15.4 46 24 46z" />
+      <path fill="#FBBC05" d="M11.69 28.18C11.25 26.86 11 25.45 11 24s.25-2.86.69-4.18v-5.7H4.34C2.85 17.09 2 20.45 2 24s.85 6.91 2.34 9.88l7.35-5.7z" />
+      <path fill="#EA4335" d="M24 10.75c3.23 0 6.13 1.11 8.41 3.29l6.31-6.31C34.91 4.18 29.93 2 24 2 15.4 2 7.96 6.93 4.34 14.12l7.35 5.7c1.73-5.2 6.58-9.07 12.31-9.07z" />
+    </svg>
+  );
+}
+
+/* ------------------------------------------------------------- page ----- */
 
 export default function HomePageDesktop() {
   const [sel, setSel] = useState('All Services');
   const [pfIndex, setPfIndex] = useState(0);
   const navigate = useNavigate();
 
-  const onBrowse = (e:React.ChangeEvent<HTMLSelectElement>) => {
+  const onBrowse = (e: React.ChangeEvent<HTMLSelectElement>) => {
     setSel(e.target.value);
     if (NAV_LINKS[e.target.value]) navigate(NAV_LINKS[e.target.value]);
   };
 
+  const maxIndex = Math.max(0, pharmacyFirst.length - 3);
+
   return (
     <>
       <Header />
-      <main className="desktop-page">
-        <section className="hero-section">
-          <div className="hero-text">
-            <h1>
-              Trusted <span style={{color:ACCENT}}>Pharmacy</span><br/>
-              Care in Castlecroft
+      <main className="cp-page">
+        {/* ---------------------------------------------------------- hero */}
+        <section className="cp-hero">
+          <div className="cp-hero__text">
+            <span className="cp-hero__eyebrow">
+              <FontAwesomeIcon icon={faLocationDot} />
+              Your local pharmacy in Castlecroft
+            </span>
+            <h1 className="cp-hero__title">
+              Trusted pharmacy care,
+              <br />
+              close to home.
             </h1>
-            <p>Explore our wide range of treatments or consult with our medical professionals.</p>
-            <div className="hero-controls">
-              <select value={sel} onChange={onBrowse} className="browse-select">
-                {browseOptions.map(o=>(
-                  <option key={o} value={o}>{o}</option>
-                ))}
-              </select>
+            <p className="cp-hero__lead">
+              Book an appointment or speak to our clinicians about a wide range of
+              NHS and private treatments — all under one roof.
+            </p>
+
+            <div className="cp-hero__controls">
+              <label className="cp-select">
+                <span className="cp-select__label">Browse services</span>
+                <select value={sel} onChange={onBrowse}>
+                  {browseOptions.map((o) => (
+                    <option key={o} value={o}>{o}</option>
+                  ))}
+                </select>
+              </label>
               <button
-                className="btn-get-started"
-                onClick={()=>navigate(NAV_LINKS[sel]||NAV_LINKS['All Services'])}
+                className="cp-btn cp-btn--primary"
+                onClick={() => navigate(NAV_LINKS[sel] || NAV_LINKS['All Services'])}
               >
-                Get Started Now
+                Get started <FontAwesomeIcon icon={faArrowRight} />
               </button>
-              <a className="btn-call" href="tel:01902969936" style={{color:'#fff'}}>
-                <FontAwesomeIcon icon={faPhone} style={{color:'#fff'}} />
-                <span style={{color:'#fff'}}>01902 969936</span>
+              <a className="cp-btn cp-btn--ghost" href="tel:01902969936">
+                <FontAwesomeIcon icon={faPhone} /> 01902 969936
               </a>
             </div>
-            <div className="hero-rating">
-              <img src="https://www.google.com/images/branding/googlelogo/1x/googlelogo_color_74x24dp.png"
-                   alt="Google logo"/>
-              <span>★★★★★ 5.0/5.0</span>
+
+            <div className="cp-trust">
+              <div className="cp-trust__item cp-trust__item--rating">
+                <GoogleG />
+                <span className="cp-trust__stars">
+                  <FontAwesomeIcon icon={faStar} />
+                  <FontAwesomeIcon icon={faStar} />
+                  <FontAwesomeIcon icon={faStar} />
+                  <FontAwesomeIcon icon={faStar} />
+                  <FontAwesomeIcon icon={faStar} />
+                </span>
+                <strong>5.0</strong>
+                <span className="cp-trust__sub">Google reviews</span>
+              </div>
+              <div className="cp-trust__divider" />
+              <div className="cp-trust__item">
+                <FontAwesomeIcon icon={faShieldHalved} className="cp-trust__ico" />
+                <span>GPhC-registered pharmacy</span>
+              </div>
             </div>
           </div>
-           {/* …above */}
 
-           <div className="hero-cards">
-  {/* Big featured card on the left */}
-  <div
-    className="card featured-card"
-    onClick={() => navigate(HERO_CARD_LINKS['Ear Piercing'])}
-  >
-    <div className="card-image">
-      <img
-        src="https://media.istockphoto.com/id/1500832940/photo/pharmacist-uses-a-specialized-piercing-gun-to-create-a-new-earlobe-piercing.jpg?s=612x612&w=0&k=20&c=xd0ka7W4LjBrgcc7otBcS4UbbwXFEzAycc08GfZ_kfo="
-        alt="Ear Piercing"
-      />
-      <div className="card-overlay"></div>
-    </div>
-    <div className="card-footer">
-      <h4>Ear Piercing</h4>
-      <FontAwesomeIcon icon={faChevronRight} />
-    </div>
-  </div>
-
-  {/* Two smaller cards stacked vertically on the right */}
-  <div className="side-cards">
-    {['Travel Clinic', 'Ear Wax Removal'].map((key) => {
-      const imgUrl = key === 'Ear Wax Removal'
-        ? 'https://clearclinics.co.uk/wp-content/uploads/2023/10/earwax-removal-1024x561.jpg'
-        : 'https://focus.independent.ie/thumbor/kZpypGnMeOe4CqXsAfQrkN28nCk=/0x8:1500x835/731x411/prod-mh-ireland/058221aa-c2c3-11ed-8d5b-0210609a3fe2.jpg';
-      return (
-        <div
-          key={key}
-          className="card side-card"
-          onClick={() => navigate(HERO_CARD_LINKS[key])}
-        >
-          <div className="card-image">
-            <img src={imgUrl} alt={key} />
-            <div className="card-overlay"></div>
-          </div>
-          <div className="card-footer">
-            <h5>{key}</h5>
-            <FontAwesomeIcon icon={faChevronRight} />
-          </div>
-        </div>
-      );
-    })}
-  </div>
-</div>
-        </section>
-
-        <section className="popular-services">
-          <header>
-            <h2>Popular services</h2>
-            <button className="btn-start-sm" onClick={()=>navigate('/services')}>
-              See all services →
+          {/* asymmetric card cluster */}
+          <div className="cp-hero__cards">
+            <button
+              className="cp-tile cp-tile--feature"
+              onClick={() => navigate(HERO_CARD_LINKS['Ear Piercing'])}
+            >
+              <img
+                src="https://media.istockphoto.com/id/1500832940/photo/pharmacist-uses-a-specialized-piercing-gun-to-create-a-new-earlobe-piercing.jpg?s=612x612&w=0&k=20&c=xd0ka7W4LjBrgcc7otBcS4UbbwXFEzAycc08GfZ_kfo="
+                alt="Ear piercing at Castlecroft Pharmacy"
+              />
+              <span className="cp-tile__label">
+                <span>Ear piercing</span>
+                <FontAwesomeIcon icon={faChevronRight} />
+              </span>
             </button>
-          </header>
-          <div className="grid-3">
-            {popularServices.map(svc=>(
-              <div
-                key={svc.title}
-                className="card svc-card"
-                onClick={()=>navigate(svc.link)}
-              >
-                <div className="svc-img">
-                  <img src={svc.img} alt={svc.title}/>
-                </div>
-                <div className="svc-body">
-                  <h5>{svc.title}</h5>
-                  <p>{svc.sub}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
 
-        <section className="pharmacy-first">
-          <header>
-            <h2>Pharmacy First treatments</h2>
-            <div className="pf-controls">
-              <button
-                onClick={()=>setPfIndex(i=>Math.max(0,i-1))}
-                disabled={pfIndex===0}
-              >←</button>
-              <button
-                onClick={()=>setPfIndex(i=>Math.min(pharmacyFirst.length-3,i+1))}
-                disabled={pfIndex>=pharmacyFirst.length-3}
-              >→</button>
+            <div className="cp-hero__side">
+              {[
+                { key: 'Travel Clinic', img: 'https://focus.independent.ie/thumbor/kZpypGnMeOe4CqXsAfQrkN28nCk=/0x8:1500x835/731x411/prod-mh-ireland/058221aa-c2c3-11ed-8d5b-0210609a3fe2.jpg' },
+                { key: 'Ear Wax Removal', img: 'https://clearclinics.co.uk/wp-content/uploads/2023/10/earwax-removal-1024x561.jpg' },
+              ].map(({ key, img }) => (
+                <button
+                  key={key}
+                  className="cp-tile"
+                  onClick={() => navigate(HERO_CARD_LINKS[key])}
+                >
+                  <img src={img} alt={key} />
+                  <span className="cp-tile__label">
+                    <span>{key}</span>
+                    <FontAwesomeIcon icon={faChevronRight} />
+                  </span>
+                </button>
+              ))}
             </div>
-          </header>
-          <div className="pf-track" style={{transform:`translateX(-${pfIndex*276}px)`}}>
-            {pharmacyFirst.map(svc=>(
-              <div key={svc.title} className="card pf-card" onClick={()=>navigate(svc.link)}>
-                <div className="pf-img"><img src={svc.img} alt={svc.title}/></div>
-                <div className="pf-body">
-                  <h5>{svc.title}</h5>
-                  <small>{svc.subtitle}</small>
-                  <button className="btn-start-sm2">Get started</button>
-                </div>
-              </div>
-            ))}
           </div>
         </section>
 
-        <section className="popular-services">
-          <header>
-            <h2>Free NHS vaccination</h2>
-            {/* <button className="btn-start-sm" onClick={()=>navigate('/services')}>
-              See all services →
-            </button> */}
-          </header>
-          <div className="grid-3">
-            {covidvaccine.map(svc=>(
-              <div
-                key={svc.title}
-                className="card svc-card"
-                onClick={()=>navigate(svc.link)}
-              >
-                <div className="svc-img">
-                  <img src={svc.img} alt={svc.title}/>
-                </div>
-                <div className="svc-body">
-                  <h5>{svc.title}</h5>
-                  <p>{svc.sub}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        <section className="find-us">
-          <h2 style={{fontWeight: 700 }}>Find us</h2>
-          <div className="row align-items-center mt-4">
-            <div className="col-md-6">
-              <p>
-                Contact us for travel vaccination, ear wax removal and a wide
-                range of NHS or private services we offer.
-              </p>
-              <p>
-                <strong>Phone:</strong> 01902 969936
-              </p>
-              <p>
-                <strong>Email:</strong> castlecroftpharmacy@gmail.com
-              </p>
-              <p>
-                <strong>Address:</strong> 92 Windmill Ln, Castlecroft,
-                Wolverhampton WV3 8HG
-              </p>
-              <p>
-                <strong>Hours:</strong>
-                <br />
-                Monday–Friday 9 am–6:30 pm
-                <br />
-                Saturday 9 am–5 pm
-                <br />
-                Sunday Closed
-              </p>
+        {/* ------------------------------------------------ popular services */}
+        <section className="cp-section">
+          <div className="cp-section__head">
+            <div>
+              <h2 className="cp-section__title">Popular services</h2>
+              <p className="cp-section__sub">The treatments our patients book most.</p>
             </div>
-            <div className="col-md-6">
+            <button className="cp-link" onClick={() => navigate('/services')}>
+              See all services <FontAwesomeIcon icon={faArrowRight} />
+            </button>
+          </div>
+
+          <div className="cp-grid">
+            {popularServices.map((svc) => (
+              <button key={svc.title} className="cp-card" onClick={() => navigate(svc.link)}>
+                <div className="cp-card__media">
+                  <img src={svc.img} alt={svc.title} />
+                </div>
+                <div className="cp-card__body">
+                  <h3>{svc.title}</h3>
+                  <p>{svc.sub}</p>
+                  <span className="cp-card__cta">Book now <FontAwesomeIcon icon={faArrowRight} /></span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {/* ---------------------------------------------- pharmacy first band */}
+        <section className="cp-band">
+          <div className="cp-section">
+            <div className="cp-section__head">
+              <div>
+                <h2 className="cp-section__title">Pharmacy First treatments</h2>
+                <p className="cp-section__sub">
+                  Get seen for common conditions — no GP appointment needed.
+                </p>
+              </div>
+              <div className="cp-carousel__nav">
+                <button
+                  aria-label="Previous"
+                  onClick={() => setPfIndex((i) => Math.max(0, i - 1))}
+                  disabled={pfIndex === 0}
+                >
+                  <FontAwesomeIcon icon={faChevronLeft} />
+                </button>
+                <button
+                  aria-label="Next"
+                  onClick={() => setPfIndex((i) => Math.min(maxIndex, i + 1))}
+                  disabled={pfIndex >= maxIndex}
+                >
+                  <FontAwesomeIcon icon={faChevronRight} />
+                </button>
+              </div>
+            </div>
+
+            <div className="cp-carousel">
+              <div
+                className="cp-carousel__track"
+                style={{ transform: `translateX(calc(-${pfIndex} * (300px + 20px)))` }}
+              >
+                {pharmacyFirst.map((svc) => (
+                  <button key={svc.title} className="cp-pf" onClick={() => navigate(svc.link)}>
+                    <div className="cp-pf__media">
+                      <img src={svc.img} alt={svc.title} />
+                      <span className="cp-pf__age">{svc.subtitle}</span>
+                    </div>
+                    <div className="cp-pf__body">
+                      <h3>{svc.title}</h3>
+                      <span className="cp-pf__cta">Get started <FontAwesomeIcon icon={faArrowRight} /></span>
+                    </div>
+                  </button>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ------------------------------------------------- free nhs section */}
+        <section className="cp-section">
+          <div className="cp-section__head">
+            <div>
+              <h2 className="cp-section__title">Free NHS vaccinations</h2>
+              <p className="cp-section__sub">Protect yourself this season — check your eligibility.</p>
+            </div>
+          </div>
+
+          <div className="cp-grid cp-grid--three">
+            {covidVaccine.map((svc) => (
+              <button key={svc.title} className="cp-card" onClick={() => navigate(svc.link)}>
+                <div className="cp-card__media">
+                  <img src={svc.img} alt={svc.title} />
+                </div>
+                <div className="cp-card__body">
+                  <h3>{svc.title}</h3>
+                  <p>{svc.sub}</p>
+                  <span className="cp-card__cta">Book now <FontAwesomeIcon icon={faArrowRight} /></span>
+                </div>
+              </button>
+            ))}
+          </div>
+        </section>
+
+        {/* -------------------------------------------------------- find us */}
+        <section className="cp-section cp-find">
+          <div className="cp-find__panel">
+            <div className="cp-find__info">
+              <h2 className="cp-section__title">Find us</h2>
+              <p>
+                Pop in for travel vaccinations, ear wax removal, and the full range
+                of NHS and private services we offer.
+              </p>
+              <dl className="cp-find__list">
+                <div><dt>Phone</dt><dd><a href="tel:01902969936">01902 969936</a></dd></div>
+                <div><dt>Email</dt><dd><a href="mailto:castlecroftpharmacy@gmail.com">castlecroftpharmacy@gmail.com</a></dd></div>
+                <div><dt>Address</dt><dd>92 Windmill Ln, Castlecroft, Wolverhampton WV3 8HG</dd></div>
+                <div>
+                  <dt>Opening hours</dt>
+                  <dd>
+                    Mon–Fri&nbsp;&nbsp;9:00 am – 6:30 pm<br />
+                    Saturday&nbsp;&nbsp;9:00 am – 5:00 pm<br />
+                    Sunday&nbsp;&nbsp;Closed
+                  </dd>
+                </div>
+              </dl>
+            </div>
+            <div className="cp-find__map">
               <iframe
-                title="Castlecroft Pharmacy Location"
+                title="Castlecroft Pharmacy location"
                 src="https://maps.google.com/maps?q=92%20Windmill%20Ln%2C%20Castlecroft%2C%20Wolverhampton%20WV3%208HG&t=&z=15&ie=UTF8&iwloc=&output=embed"
-                width="100%"
-                height="300"
-                style={{ border: 0, borderRadius: '0.5rem', marginBottom: '30px' }}
-                allowFullScreen
                 loading="lazy"
+                allowFullScreen
               />
             </div>
           </div>
