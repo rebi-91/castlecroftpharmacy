@@ -1,64 +1,114 @@
-import React from "react";
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import {
+  faChevronRight,
+  faChevronLeft,
+  faArrowRight,
+  faLocationDot,
+  faPhone,
+  faEnvelope,
+} from '@fortawesome/free-solid-svg-icons';
 import Header from '../Header';
+import {
+  PHONE_DISPLAY,
+  PHONE_TEL,
+  EMAIL,
+  ADDRESS_LINE_1,
+  ADDRESS_LINE_2,
+  MAPS_EMBED,
+  MAPS_URL,
+  HOURS,
+  DAY_NAMES,
+  WEEK_ORDER,
+  hhmm,
+  ukNow,
+  useOpenStatus,
+} from '../pharmacyHours';
+import '../HomePageDesktop.css';
 
 const ContactPage: React.FC = () => {
+  const status = useOpenStatus();
+  const uk = ukNow();
   return (
     <div className="bg-light">
       <Header />
 
-      <section className="find-us container py-5">
-        <h2 className="text-center mb-3" style={{ fontWeight: 700, marginTop: 30 }}>
-        Get in Touch
-        </h2>
+      <section className="cp-section cp-section-alt">
+              <div className="cp-shell">
+                <div className="cp-findcard">
+                  <div className="cp-find-info">
+                    <h2>Find us</h2>
+                    <p className="cp-find-lead">
+                      We're on Windmill Lane in the heart of Castlecroft. Walk in for advice,
+                      or book ahead and we'll have a private consultation room ready.
+                    </p>
+      
+                    <ul className="cp-contact">
+                      <li>
+                        <span className="cp-contact-ico"><FontAwesomeIcon icon={faLocationDot} /></span>
+                        <div>
+                          <strong>{ADDRESS_LINE_1}</strong>
+                          <span>{ADDRESS_LINE_2}</span>
+                        </div>
+                      </li>
+                      <li>
+                        <span className="cp-contact-ico"><FontAwesomeIcon icon={faPhone} /></span>
+                        <div>
+                          <strong><a href={PHONE_TEL}>{PHONE_DISPLAY}</a></strong>
+                          <span>Speak to the pharmacy team</span>
+                        </div>
+                      </li>
+                      <li>
+                        <span className="cp-contact-ico"><FontAwesomeIcon icon={faEnvelope} /></span>
+                        <div>
+                          <strong><a href={`mailto:${EMAIL}`}>{EMAIL}</a></strong>
+                          <span>We aim to reply the same working day</span>
+                        </div>
+                      </li>
+                    </ul>
+      
+                    <div className="cp-hours">
+                      <div className="cp-hours-top">
+                        <h3>Opening hours</h3>
+                        <span className={status.open ? 'cp-status' : 'cp-status is-closed'}>
+                    <i />{status.open ? 'Open now' : 'Closed now'}
+                  </span>
 
-        <div className="row align-items-center">
-          {/* Contact details */}
-          <div className="col-md-6 mb-4 mb-md-0">
-            <p>
-              Contact us for travel vaccination, ear wax removal and a wide
-              range of NHS or private services we offer.
-            </p>
-            <p>
-              <strong>Phone:</strong> <a href="tel:01675466014">01675 466014</a>
-            </p>
-            <p>
-              <strong>Email:</strong>{" "}
-              <a href="mailto:coleshillpharmacy@gmail.com">
-                coleshillpharmacy@gmail.com
-              </a>
-            </p>
-            <p>
-              <strong>Address:</strong> <br />
-              114–116 High St, Coleshill, Birmingham B46 3BJ
-            </p>
-            <p>
-              <strong>Hours:</strong> <br />
-              Monday–Friday 8:30 am–6 pm
-              <br />
-              Saturday 9 am–5:30 pm
-              <br />
-              Sunday Closed
-            </p>
-          </div>
-
-          {/* Map */}
-          <div className="col-md-6">
-            <iframe
-              title="Coleshill Pharmacy Location"
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2483.123456789!2d-1.7890123!3d52.5654321!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48776789abcdef12:0x3456789abcdef!2s114-116%20High%20St,%20Coleshill%20B46%203BJ,%20UK!5e0!3m2!1sen!2suk!4v1623456789012"
-              width="100%"
-              height="300"
-              style={{
-                border: 0,
-                borderRadius: "0.5rem",
-                marginBottom: "30px",
-              }}
-              allowFullScreen
-              loading="lazy"
-            />
-          </div>
-        </div>
-      </section>
+                      </div>
+                      <ul>
+                                        {WEEK_ORDER.map(d => {
+                                          const h = HOURS[d];
+                                          return (
+                                            <li key={d} className={d === uk.day ? 'is-today' : ''}>
+                                              <span>{DAY_NAMES[d]}</span>
+                                              <span>{h ? `${hhmm(h[0])} – ${hhmm(h[1])}` : 'Closed'}</span>
+                                            </li>
+                                          );
+                                        })}
+                                      </ul>
+                     
+                    </div>
+      
+                    <div className="cp-find-actions">
+                      <a className="cp-btn-primary" href={MAPS_URL} target="_blank" rel="noreferrer">
+                        Get directions <FontAwesomeIcon icon={faArrowRight} />
+                      </a>
+                      <a className="cp-btn-ghost" href={PHONE_TEL}>Call the pharmacy</a>
+                    </div>
+                  </div>
+      
+                  <div className="cp-find-map">
+                    <iframe
+                      title="Castlecroft Pharmacy location"
+                      src={MAPS_EMBED}
+                      allowFullScreen
+                      loading="lazy"
+                    />
+                  </div>
+                </div>
+              </div>
+            </section>
     </div>
   );
 };

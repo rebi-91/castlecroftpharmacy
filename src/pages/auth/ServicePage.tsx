@@ -79,14 +79,14 @@ export const allServices: Service[] = [
     category: 'Private Service',
     description: 'Expert advice on vaccinations and prophylaxis.',
   },
-  {
-    id: 4,
-    title: 'Travel vaccine',
-    img: 'https://clinic-digital.lon1.cdn.digitaloceanspaces.com/100/810793/M8XAcWPBe6.webp',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Comprehensive vaccine service for your trip.',
-  },
+  // {
+  //   id: 4,
+  //   title: 'Travel vaccine',
+  //   img: 'https://clinic-digital.lon1.cdn.digitaloceanspaces.com/100/810793/M8XAcWPBe6.webp',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Comprehensive vaccine service for your trip.',
+  // },
   {
     id: 5,
     title: 'Uncomplicated UTI (Women)',
@@ -95,14 +95,14 @@ export const allServices: Service[] = [
     category: 'Pharmacy First',
     description: 'Treatment without GP appointment for quick relief.',
   },
-  {
-    id: 6,
-    title: 'Vitamin B12 Injection',
-    img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/219742/pu-_f9Dh4vv.webp',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Injectable boost for energy, mood and vitality.',
-  },
+  // {
+  //   id: 6,
+  //   title: 'Vitamin B12 Injection',
+  //   img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/219742/pu-_f9Dh4vv.webp',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Injectable boost for energy, mood and vitality.',
+  // },
   {
     id: 7,
     title: 'Impetigo',
@@ -119,14 +119,14 @@ export const allServices: Service[] = [
     category: 'Pharmacy First',
     description: 'Treats infection, reduces swelling and pain.',
   },
-  {
-    id: 90,
-    title: 'Period Delay',
-    img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/698695/AIGRXrZUVU.webp',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Safe hormonal delay for special occasions.',
-  },
+  // {
+  //   id: 90,
+  //   title: 'Period Delay',
+  //   img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/698695/AIGRXrZUVU.webp',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Safe hormonal delay for special occasions.',
+  // },
   {
     id: 89,
     title: 'Period Pain',
@@ -135,14 +135,14 @@ export const allServices: Service[] = [
     category: 'Private Service',
     description: 'Treatment options for period pain, where suitable.',
   },
-  {
-    id: 10,
-    title: 'Private flu jab',
-    img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/281723/8K3Uhf06mK.webp',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Quick, private flu vaccination in-store.',
-  },
+  // {
+  //   id: 10,
+  //   title: 'Private flu jab',
+  //   img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/281723/8K3Uhf06mK.webp',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Quick, private flu vaccination in-store.',
+  // },
   {
     id: 44,
     title: 'Shingles',
@@ -151,14 +151,14 @@ export const allServices: Service[] = [
     category: 'Pharmacy First',
     description: 'Pharmacy First support and treatment for shingles.',
   },
-  {
-    id: 12,
-    title: 'Weight Loss Clinic',
-    img: 'https://gpcdcgwgkciyogknekwp.supabase.co/storage/v1/object/public/pharmacy/weightclinic.jpg',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Clinical support for sustainable weight loss.',
-  },
+  // {
+  //   id: 12,
+  //   title: 'Weight Loss Clinic',
+  //   img: 'https://gpcdcgwgkciyogknekwp.supabase.co/storage/v1/object/public/pharmacy/weightclinic.jpg',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Clinical support for sustainable weight loss.',
+  // },
   {
     id: 13,
     title: 'Oral Contraception',
@@ -199,14 +199,14 @@ export const allServices: Service[] = [
   //   category: 'Private Service',
   //   description: 'Coming Soon',
   // },
-  {
-    id: 18,
-    title: 'Ear wax removal',
-    img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/123156/AHHct1yZUR.webp',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Safe microsuction for clear, comfortable ears.',
-  },
+  // {
+  //   id: 18,
+  //   title: 'Ear wax removal',
+  //   img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/123156/AHHct1yZUR.webp',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Safe microsuction for clear, comfortable ears.',
+  // },
   {
     id: 19,
     title: 'Earache',
@@ -221,7 +221,7 @@ export const allServices: Service[] = [
     img: 'https://gpcdcgwgkciyogknekwp.supabase.co/storage/v1/object/public/pharmacy/ed.jpeg',
     duration: '20 mins',
     category: 'Private Service',
-    description: 'Discreet assessment and prescription service.',
+    description: 'Discreet assessment and treatment if suitable.',
   },
   {
     id: 21,
@@ -234,7 +234,7 @@ export const allServices: Service[] = [
   {
     id: 22,
     title: 'Acid Reflux',
-    img: 'https://www.london-ent.co.uk/wp-content/uploads/2025/05/reflux.png',
+    img: 'https://maxwellclinic.com/wp-content/uploads/2022/07/Acid-Reflux.jpeg',
     duration: '20 mins',
     category: 'Private Service',
     description:
@@ -247,24 +247,24 @@ export const allServices: Service[] = [
     duration: '20 mins',
     category: 'Private Service',
     description:
-      'Our prescribing pharmacist may provide a short course of Naproxen 500 mg for effective pain management, where clinically appropriate.',
+      'See us for proper pain management',
   },
-  {
-    id: 24,
-    title: 'Male Pattern Baldness (Androgenic Alopecia)',
-    img: 'https://gpcdcgwgkciyogknekwp.supabase.co/storage/v1/object/public/pharmacy//baldness.jpeg',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Targeted treatment for androgenic alopecia.',
-  },
-  {
-    id: 25,
-    title: 'Female Hirsutism in Women',
-    img: 'https://cdn.shopify.com/s/files/1/2193/0943/files/Untitled_design_16_480x480.jpg?v=1628785572',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Topical therapy to reduce excessive facial hair.',
-  },
+  // {
+  //   id: 24,
+  //   title: 'Male Pattern Baldness (Androgenic Alopecia)',
+  //   img: 'https://gpcdcgwgkciyogknekwp.supabase.co/storage/v1/object/public/pharmacy//baldness.jpeg',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Targeted treatment for androgenic alopecia.',
+  // },
+  // {
+  //   id: 25,
+  //   title: 'Female Hirsutism in Women',
+  //   img: 'https://cdn.shopify.com/s/files/1/2193/0943/files/Untitled_design_16_480x480.jpg?v=1628785572',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Topical therapy to reduce excessive facial hair.',
+  // },
   {
     id: 26,
     title: 'Jet Lag',
@@ -280,7 +280,7 @@ export const allServices: Service[] = [
     img: 'https://gpcdcgwgkciyogknekwp.supabase.co/storage/v1/object/public/pharmacy//travellers%20diarrhoea.jpeg',
     duration: '20 mins',
     category: 'Private Service',
-    description: 'Azithromycin to treat traveller’s diarrhoea.',
+    description: 'Come in and treat traveller’s diarrhoea.',
   },
   {
     id: 28,
@@ -288,7 +288,7 @@ export const allServices: Service[] = [
     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS83i2TenZ7l3X4oiiNF-grg0hwcgLGROywRA&s',
     duration: '20 mins',
     category: 'Private Service',
-    description: 'Get oral solution or gel to treat oral thrush.',
+    description: 'Get gel to treat oral thrush.',
   },
   {
     id: 29,
@@ -296,121 +296,121 @@ export const allServices: Service[] = [
     img: 'https://www.allergyuk.org/wp-content/uploads/2022/03/Hay-Fever-Homepage-Banner.png',
     duration: '20 mins',
     category: 'Private Service',
-    description: 'Fexofenadine or Dymista for Hay Fever.',
+    description: 'Antihistamiines or Steroid nasal spray for Hay Fever.',
   },
-  {
-    id: 30,
-    title: 'Diphtheria, Tetanus and Polio',
-    img: 'https://hounslowclinic.co.uk/wp-content/uploads/2023/02/DTP.jpg',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Single-dose protection against diphtheria, tetanus & polio.',
-  },
-  {
-    id: 31,
-    title: 'Hepatitis A (2 doses)',
-    img: 'https://www.cdc.gov/hepatitis-a/media/images/2024/04/hepatitis-a-vaccination-thumbnail.jpg',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Complete two-dose course to prevent Hep A infection.',
-  },
-  {
-    id: 32,
-    title: 'Hepatitis B (3 doses)',
-    img: 'https://everestpharmacy.ca/wp-content/uploads/2023/04/unrecognizable-woman-getting-vac.jpg',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Full three-dose immunisation for Hep B protection.',
-  },
-  {
-    id: 33,
-    title: 'Typhoid (1 dose or orally)',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmmkiMn_sezFuURSr2qHHNuubFMs6QYYq6zg&s',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Choice of injectable or oral typhoid vaccination.',
-  },
-  {
-    id: 34,
-    title: 'Rabies (3 doses)',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqcfM5AWDvTRzPCNRIBr4OqK03DvAzbAjB5w&s',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Post-exposure or pre-travel three-dose course.',
-  },
-  {
-    id: 35,
-    title: 'Meningitis ACWY (1 dose – for Hajj/Umrah)',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpuLSpRW3XG6ujJwb_8_ID_7YKZTjKtvWYKA&s',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Required vaccine for Hajj & Umrah pilgrims.',
-  },
-  {
-    id: 36,
-    title: 'Cholera',
-    img: 'https://beaconpharmacy.co.uk/wp-content/uploads/2025/06/whooping-cough-vaccine-great-barr.jpg',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Two-dose oral vaccine for cholera prevention.',
-  },
-  {
-    id: 37,
-    title: 'Japanese Encephalitis',
-    img: 'https://milesclinic.co.uk/wp-content/uploads/2024/04/vaccination.jpeg',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Protects against mosquito-borne Japanese encephalitis.',
-  },
-  {
-    id: 38,
-    title: 'Chicken pox',
-    img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/706101/svONNg1d06.webp',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Private immunisation against chickenpox.',
-  },
+  // {
+  //   id: 30,
+  //   title: 'Diphtheria, Tetanus and Polio',
+  //   img: 'https://hounslowclinic.co.uk/wp-content/uploads/2023/02/DTP.jpg',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Single-dose protection against diphtheria, tetanus & polio.',
+  // },
+  // {
+  //   id: 31,
+  //   title: 'Hepatitis A (2 doses)',
+  //   img: 'https://www.cdc.gov/hepatitis-a/media/images/2024/04/hepatitis-a-vaccination-thumbnail.jpg',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Complete two-dose course to prevent Hep A infection.',
+  // },
+  // {
+  //   id: 32,
+  //   title: 'Hepatitis B (3 doses)',
+  //   img: 'https://everestpharmacy.ca/wp-content/uploads/2023/04/unrecognizable-woman-getting-vac.jpg',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Full three-dose immunisation for Hep B protection.',
+  // },
+  // {
+  //   id: 33,
+  //   title: 'Typhoid (1 dose or orally)',
+  //   img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSmmkiMn_sezFuURSr2qHHNuubFMs6QYYq6zg&s',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Choice of injectable or oral typhoid vaccination.',
+  // },
+  // {
+  //   id: 34,
+  //   title: 'Rabies (3 doses)',
+  //   img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRqcfM5AWDvTRzPCNRIBr4OqK03DvAzbAjB5w&s',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Post-exposure or pre-travel three-dose course.',
+  // },
+  // {
+  //   id: 35,
+  //   title: 'Meningitis ACWY (1 dose – for Hajj/Umrah)',
+  //   img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQpuLSpRW3XG6ujJwb_8_ID_7YKZTjKtvWYKA&s',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Required vaccine for Hajj & Umrah pilgrims.',
+  // },
+  // {
+  //   id: 36,
+  //   title: 'Cholera',
+  //   img: 'https://beaconpharmacy.co.uk/wp-content/uploads/2025/06/whooping-cough-vaccine-great-barr.jpg',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Two-dose oral vaccine for cholera prevention.',
+  // },
+  // {
+  //   id: 37,
+  //   title: 'Japanese Encephalitis',
+  //   img: 'https://milesclinic.co.uk/wp-content/uploads/2024/04/vaccination.jpeg',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Protects against mosquito-borne Japanese encephalitis.',
+  // },
+  // {
+  //   id: 38,
+  //   title: 'Chicken pox',
+  //   img: 'https://lead-services-agency.fra1.cdn.digitaloceanspaces.com/4/706101/svONNg1d06.webp',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Private immunisation against chickenpox.',
+  // },
   {
     id: 39,
     title: 'Meningitis B',
     img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQPJhskq8HxRHnyQOx-CNmqNwrhnMXSJk0IYw&s',
     duration: '20 mins',
-    category: 'Private Service',
+    category: 'NHS Service',
     description: 'Protective dose against meningococcal B infection.',
   },
-  {
-    id: 40,
-    title: 'Shingles vaccination (Zostavax)',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZNi6aW0RWIvKjQNyFlWbmIkJi8GnuIDMZzw&s',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Live vaccine for shingles prevention in adults.',
-  },
-  {
-    id: 41,
-    title: 'Anti-malarials',
-    img: 'https://fieldspharmacy.uk/wp-content/uploads/2023/09/antimalarials-2.jpg',
-    duration: '20 mins',
-    category: 'Private Service',
-    description:
-      'Travel consultation and prescription of the most effective anti-malarial regimen for your destination.',
-  },
-  {
-    id: 42,
-    title: 'HPV',
-    img: 'https://www.pulsetoday.co.uk/wp-content/uploads/2022/02/one-dose-hpv-vaccine.jpg',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Vaccination against Human Papillomavirus (HPV).',
-  },
-  {
-    id: 43,
-    title: 'Dengue Fever',
-    img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhonnFjOhZsNNdyLmKbvDgGQYVRIWHVJauaw&s',
-    duration: '20 mins',
-    category: 'Private Service',
-    description: 'Vaccination against Dengue Fever.',
-  },
+  // {
+  //   id: 40,
+  //   title: 'Shingles vaccination (Zostavax)',
+  //   img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZNi6aW0RWIvKjQNyFlWbmIkJi8GnuIDMZzw&s',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Live vaccine for shingles prevention in adults.',
+  // },
+  // {
+  //   id: 41,
+  //   title: 'Anti-malarials',
+  //   img: 'https://fieldspharmacy.uk/wp-content/uploads/2023/09/antimalarials-2.jpg',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description:
+  //     'Travel consultation and prescription of the most effective anti-malarial regimen for your destination.',
+  // },
+  // {
+  //   id: 42,
+  //   title: 'HPV',
+  //   img: 'https://www.pulsetoday.co.uk/wp-content/uploads/2022/02/one-dose-hpv-vaccine.jpg',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Vaccination against Human Papillomavirus (HPV).',
+  // },
+  // {
+  //   id: 43,
+  //   title: 'Dengue Fever',
+  //   img: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhonnFjOhZsNNdyLmKbvDgGQYVRIWHVJauaw&s',
+  //   duration: '20 mins',
+  //   category: 'Private Service',
+  //   description: 'Vaccination against Dengue Fever.',
+  // },
 ];
 
 // IDs configuration
@@ -432,7 +432,7 @@ const VACCINE_IDS = [
   36, // Cholera
   37, // Japanese Encephalitis
   38, // Chicken pox
-  39, // Meningitis B
+  // 39, // Meningitis B
   40, // Shingles vaccination
   42, // HPV
   43, // Dengue Fever
@@ -446,10 +446,10 @@ const tabs = [
   { key: 'NHS', label: 'NHS Services' },
   { key: 'PHARMACY', label: 'Pharmacy First' },
   { key: 'PRIVATE', label: 'Private Treatments' },
-  { key: 'TRAVEL', label: 'Travel Vaccinations' },
+  // { key: 'TRAVEL', label: 'Travel Vaccinations' },
 ];
 
-const HEADER_HEIGHT = 64;
+const HEADER_HEIGHT = 18;
 
 const styles: Record<string, CSSProperties> = {
   pageWrapper: { paddingTop: HEADER_HEIGHT, backgroundColor: '#fff' },
@@ -469,7 +469,7 @@ const styles: Record<string, CSSProperties> = {
     color: '#0d1b3e',
   },
   pageSubtitle: {
-    fontSize: '1.1rem',
+    fontSize: '1.rem',
     color: '#677294',
     marginBottom: '1.5rem',
     maxWidth: '600px',
@@ -640,11 +640,11 @@ const ServicePage: React.FC = () => {
 
       <div style={styles.pageWrapper}>
         <div style={styles.container}>
-          <nav style={styles.breadcrumb}>
+          {/* <nav style={styles.breadcrumb}>
             <Link to="/">Home</Link>
             <span style={styles.sep}>›</span>
             <span style={{ fontWeight: 500 }}>Services</span>
-          </nav>
+          </nav> */}
 
           <h1 style={styles.pageTitle}>All Treatments &amp; Services</h1>
 
